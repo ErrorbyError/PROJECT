@@ -1,0 +1,196 @@
+*, ::before, ::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* put our font-size to 62.5% will make our page with a font equivalent to 10 px. it's good to use Rem cause to rem will be 20 px. (the default font-size of a page is 16px)*/
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: Baskervville, serif;
+    color: linen;
+    background-color: rgb(20, 30, 40);
+}
+h1{
+    font-family: Anton, sans-serif;
+
+}
+h2, h3, h4, h5, h6{
+    font-family: Raleway, sans-serif;
+
+}
+a{
+    text-decoration: none;
+    color: linen;
+}
+/* using grid layout, allow us to center horizontally and vertically while still retaining control to do things like overlap layout */
+
+main{
+    display: grid;
+    /* minmax makes our page responsive, and it takes two arguments,*/
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    row-gap: 3rem;
+}
+/* our overall layout is ready, since it has 3 primarily section */
+.heading{
+/* now let's layout the child's */
+/* grid-column is a shorthand for grid-column start and grid-column end, it's useful to place the child where we want.*/
+grid-column: 2 / 3;
+/* it's staring at second of my primarily section */
+display: grid;
+/* grid-template-columns: repeat is useful so we doesn't need to manually add columns */
+grid-template-columns: repeat(2, 1fr);
+row-gap: 1.5rem;
+}
+.hero{
+    /* if we want a column to be the last but we do not have a idea how much columns we have. we can use -1 to determine that that column will be the last independent of how many columns we will have, actually it'll span the whole space. */
+    position: relative;
+    grid-column: 1 / -1 ;
+
+}
+.hero-title{
+    text-align: center;
+    color: orangered;
+    font-size: 8rem;
+}
+.hero-subtitle{
+ font-size: 2.4rem;
+ color: orangered;   
+ text-align: center;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.author{
+    font-size: 2rem;
+    font-family: Raleway, sans-serif;
+
+}
+.author-name a:hover{
+    background-color: #306203;
+}
+.publish-date{
+    color: rgba(255, 255, 255, 0.5);
+}
+.social-icons{
+    display: grid;
+    font-size: 3rem;
+    grid-template-columns: repeat(5, 1fr);
+    /* okay, but if we want to add more icons we would have to add additional columns and it's not efficient, to solve this problem, we can use grid-auto-flow, it auto-placement algorithm to adjust the grid layout. Setting it to column will tell the algorithm to create new columns for content as needed.*/
+    grid-auto-flow: column ;
+    /* Now the auto-placement algorithm will kick in when you add a new icon element. However, the algorithm defaults the new column width to be auto, which will not match our current columns. */
+    /* we can override this with the grid-auto-columns property. Give the .social-icons selector a grid-auto-columns property set to 1fr. */
+    grid-auto-columns: 1fr;
+    /* Much like Flexbox, with CSS Grid we can align the content of grid items with align-items and justify-items.*/
+
+    /* align-items will align child elements along the column axis > cross */
+    /* justify-items will align child elements along the row axis. > main */
+    align-items: center;
+    justify-items: center;
+}
+.text{
+    grid-column: 2 / 3;
+    font-size: 1.8rem;
+    letter-spacing: 0.6;
+    /*we can create columns within an element without using Grid by using the column-width property. */
+    column-width: 25rem;
+    text-align: justify;
+
+}
+/* The ::first-letter pseudo-selector allows you to target the first letter in the text content of an element. */
+
+.first-paragraph::first-letter{
+    font-size: 6rem;
+    color: orangered;
+    float: left;
+    margin-right: 1rem;
+}
+hr{
+    margin: 1.5rem 0;
+/* if we want to give hr some color, first we need to adjust the border. */
+border: 1px solid rgba(120, 120, 120, 0.6);
+
+}
+.quote{
+    color: #00beef;
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: Raleway, sans-serif;
+
+}
+/* a great way to put aspas along our text */
+.quote::before{
+    content: '" ';
+}
+.quote::after{
+    content: ' "';
+}
+.text-with-images{
+    display: grid;
+/* we need two columns for imagem and text */
+    grid-template-columns: 1fr 2fr;
+    column-gap: 3.0rem;
+    margin-bottom: 3rem;
+}
+.lists{
+    list-style-type: none;
+    margin-top: 2rem;
+}
+.lists li{
+    margin-bottom: 1.5rem;
+}
+.list-title, .list-subtitle {
+    color: #00beef;
+}
+.image-wrapper{
+    display: grid;
+    grid-template-columns:  2fr 1fr;  
+     /*to specify rows it have the ability to adjust, and if we put min-content there will be no gap inside of these columns, cuz te rows will take the space needed to that content, basically it will fit the entire height  */
+    grid-template-rows: repeat(3, min-content);
+    /* gap is a shorthand for gap-columns and gap-rows, fi we put just one value, it wll use it for both of them, by if we specify with two values, the first one is for rows and teh second one will be for columns */
+    gap: 2rem;
+    /* well, there's a shorthand for align-items and for justify-items properties, it's place-items, if we use only one value, it'll take for both of them, but if we use two values, the first one will be for align-items and the second one will be for justify-items*/
+    place-items: center;
+}
+.image-1, .image-3{
+    grid-column: 1 / -1 ;
+}
+
+@media only screen and (max-width: 720px){
+    .image-wrapper{
+        grid-template-columns: 1fr;
+    }
+}       
+
+@media only screen and (max-width: 600px){
+    .text-with-images{
+        grid-template-columns: 1fr;
+    }
+
+}
+@media only screen and (max-width: 550px){
+    .hero-title{
+        font-size: 6rem;
+    }
+    .hero-subtitle, .author, .quote, .list-title{
+        font-size: 1.8rem;
+
+    }
+    .social-icons{
+        font-size: 2rem;
+
+    }
+    .text{
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (max-width: 420px){
+    .hero-title{
+        font-size: 4.5rem;
+    }
+
+}

@@ -1,0 +1,69 @@
+/* to normalize all the box, we have to apply box-sizing:border-box */
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f5f6f7;
+
+}
+.header{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 32px;
+    background-color:#0a0a23;
+    color: #fff;
+    border-bottom: 4px solid #fdb347;
+}
+.buttom{
+    border: 1px solid #fdb347;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    font-weight: 700;
+}
+.buttom:hover{
+    background-color: #fdb347;
+}
+.buttom a {
+    text-decoration: none;
+}
+.gallery img{
+    width: 100%;
+    max-width: 350px;
+    height: 300px;
+    /* Notice how some of your images have become distorted. This is because the images have different aspect ratios. Rather than setting each aspect ratio individually, you can use the object-fit property to determine how images should behave. */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Flexbox has a main and cross axis. The main axis is defined by the flex-direction property, which has four possible values: */
+/* row (default): horizontal axis with flex items from left to right
+row-reverse: horizontal axis with flex items from right to left
+column: vertical axis with flex items from top to bottom
+column-reverse: vertical axis with flex items from bottom to top */
+.gallery{
+   display: flex; 
+   flex-direction: row;
+/* The flex-wrap property determines how your flex items behave when the flex container is too small. Setting it to wrap will allow the items to wrap to the next row or column. nowrap (default) will prevent your items from wrapping and shrink them if needed. */
+    flex-wrap: wrap;
+    /* The justify-content property determines how the items inside a flex container are positioned along the main axis, affecting their position and the space around them. */
+    /* in other words. justify-content is to main axis. bare this in mind */
+    justify-content: center;
+    /* align-items determines how the items inside a flex container are positioned along the cross axis */
+    /* in other words. justify-content is to main axis. bare this in mind */ 
+    align-items: center;
+    padding: 20px 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* we can use Gap when your image need some spaces between rows and columns. The gap property and its row-gap and column-gap */
+    gap: 16px;
+}
+/* ::after pseudo-element creates an element that is the last child of the selected */
+.gallery::after{
+    content: "";
+    width: 350px;
+}

@@ -1,0 +1,129 @@
+body {
+    background-image: url(coffee.jpeg);
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+H1, H2, P {
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: Impact, serif;
+
+}
+
+h1{
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+
+}
+
+h2{
+    font-size: 30px;
+    
+}
+
+hr{
+    height: 2px;
+    background-color: brown;
+    border: brown;
+}
+img{
+    /* colocamos a imagem como block porque elas em si são inline-blocks */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -25px;
+}
+.newPage{
+    text-align: right;
+    margin: 0;
+
+}
+.newPage a{
+    text-decoration: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
+.newPage a:hover{
+        color: brown;
+}
+span{
+    border: 2px;
+    border-color: black;
+    display: inline-block;
+    /* background-color: brown; */
+}
+
+.menu {
+    width: 80%;
+    background-color: burlywood;
+    /* usando margin-left e right para aoto, vc centraliza o Elemento! */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    max-width: 500px;
+    /* max-width - esse propriedade define at[e quanto a div pode se expandir, independente se antes tinha uma condição como 50% da tela, ou seja, é 50% até n ultrapassar 500px */
+}
+
+.established{
+    font-style: italic;
+}
+/* heading /\ */
+
+/* content \/ */
+.item p{
+    /* inline-block - isso serve para transformar qualquer elemento que pega toda a width da pagina. transformando ela em inline block. o elemento s[o pega o width do conteúdo que necessita */
+    /* inline-block pertence a propriedade display */
+    display: inline-block;
+    /* adicionando margin para nosso paragrafo, conseguimos alterar o gap entre eles */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.flavor, .dessert{
+    /* text-align - permite que vc modifique onde o texto ira se posicionar dentro de um elemento*/
+    /* colocamos 49% pq se colocamos 50, a segunda linha cai para baixo. pois ainda existe um espaço extra na linha */
+    /* width: 50%; */
+    text-align: left;
+    width: 75%;
+    /* mesmo assim ainda fica um pouco de espaço no final, para resolver isso, colocamos os dois elementos P na mesma linha de código, então mudar novamente para 50% */
+
+}
+.price {
+    /* colocamos 49% pq se colocamos 50, a segunda linha cai para baixo. pois ainda existe um espaço extra na linha */
+    /* text-align: right;
+    width: 49%; */
+    text-align: right;
+    width: 25%;
+    /* mesmo assim ainda fica um pouco de espaço no final, para resolver isso, colocamos os dois elementos P na mesma linha de código, então mudar novamente para 50% */
+}
+
+.bottom-line{
+    margin-top: 25px;
+}
+/* content /\ */
+
+/* footer \/ */
+footer{
+    font-size: 14px;
+}
+footer a{
+    color: black;
+}
+footer a:visited{
+    color: black;
+}
+footer a:hover{
+    color: brown
+}
+footer a:active{
+    color: white;
+}
+.address {
+    margin-bottom: 5px;
+} 
+
